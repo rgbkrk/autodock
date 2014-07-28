@@ -3,14 +3,7 @@ autodock
 
 Perform actions based on a webhook from [the Docker Hub](https://hub.docker.com/).
 
-Idea: Make a simple Docker container that accepts a webhook from the Docker hub and triggers an action.
-
-On successful build:
-
-* `docker pull configured/image`
-* `docker pull configured/image && restart_stuff.sh`
-
-To do that, we'll need access to the host box.
+Idea: Make a simple Docker container that accepts a webhook from the Docker hub and triggers an action (like pulling a fresh copy of a Docker image and restarting services).
 
 ## Quick run
 
@@ -22,6 +15,14 @@ docker run \
 ```
 
 Replace `training/webapp` with the name of the container from the Docker hub you want to trigger on.
+
+You're probably in the mood to make it `docker pull` that image for you automatically and restart some services.
+
+## TODO
+
+* Make configuration suck less
+* Create default pull option
+* Actually figure out how to link it up with the host to do `docker` actions
 
 ## Development
 
@@ -80,6 +81,4 @@ $ docker run -e 'AUTODOCK_YAY=example/app:echo hi' -p 8080:8080 autodock
 2014/07/28 14:58:57 Running [echo hi]
 2014/07/28 14:58:57 hi
 ```
-
-
 
