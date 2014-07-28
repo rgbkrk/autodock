@@ -45,9 +45,6 @@ func DockerHubHandler(rw http.ResponseWriter, req *http.Request) {
 	repo := dockerHubPayload.Repository.RepoName
 	command, ok := repoCommands[repo]
 
-	log.Println(ok)
-	log.Println(!ok)
-
 	if !ok { // || len(command) == 0 {
 		log.Printf("Repository \"%s\" not enabled\n", repo)
 		return
@@ -96,6 +93,10 @@ func main() {
 	for repo, commands := range repoCommands {
 		log.Printf("\t%s: %s\n", repo, commands)
 	}
+
+	// TODO: Print out the full URL for the webhook on registry.hub.docker.com
+	// TODO: Determine IP of the public host?
+	log.Println("Point your Hook config at: http://{IP}/autodock/v1/")
 
 	http.HandleFunc("/autodock/v1/", DockerHubHandler)
 	http.ListenAndServe(":8080", nil)
