@@ -96,7 +96,7 @@ func main() {
 
 	// TODO: Print out the full URL for the webhook on registry.hub.docker.com
 	// TODO: Determine IP of the public host?
-	log.Println("Point your Hook config at: http://{IP}/autodock/v1/")
+	log.Println("Point your Hook config at: http://{IP+Port}/autodock/v1/")
 
 	http.HandleFunc("/autodock/v1/", DockerHubHandler)
 	http.ListenAndServe(":8080", nil)
