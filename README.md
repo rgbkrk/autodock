@@ -18,6 +18,22 @@ Replace `training/webapp` with the name of the container from the Docker hub you
 
 You'll also need to set up the webhook on your Docker repo page (located at https://registry.hub.docker/com/u/{username}/{repo}/settings/webhooks):
 
+![](http://i.imgur.com/gUnu6bd.png)
+
+Once it's set up, you can use a test webhook
+
+![](http://i.imgur.com/SkCc3X8.png)
+
+```
+core@nbviewer ~ $ docker run --publish 8080:8080 -e 'AUTODOCK_NBCACHE=rgbkrk/nbcache:echo IM IN YOUR LOGS' rgbkrk/autodock
+2014/07/28 23:26:56 Docker repository actions:
+2014/07/28 23:26:56 	rgbkrk/nbcache: [echo IM IN YOUR LOGS]
+2014/07/28 23:32:55 Processing rgbkrk/nbcache
+2014/07/28 23:32:55 Running [echo IM IN YOUR LOGS]
+2014/07/28 23:32:55 IM IN YOUR LOGS
+```
+
+
 ## TODO
 
 * Make configuration suck less
