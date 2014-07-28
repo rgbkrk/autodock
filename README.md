@@ -11,12 +11,12 @@ Idea: Make a simple Docker container that accepts a webhook from the Docker hub 
 docker run \
   --publish 8080:8080 \
   -e 'AUTODOCK_WEBAPP=training/webapp:echo yay' \
-  autodock
+  rgbkrk/autodock
 ```
 
-Replace `training/webapp` with the name of the container from the Docker hub you want to trigger on.
+Replace `training/webapp` with the name of the container from the Docker hub you want to trigger on and the command you want to run. You're probably in the mood to make it `docker pull` that image for you automatically and restart some services.
 
-You're probably in the mood to make it `docker pull` that image for you automatically and restart some services.
+You'll also need to set up the webhook on your Docker repo page (located at https://registry.hub.docker/com/u/{username}/{repo}/settings/webhooks):
 
 ## TODO
 
